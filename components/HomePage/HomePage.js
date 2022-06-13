@@ -1,7 +1,13 @@
 import Image from "next/image";
 const HomePage = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
-    <div className="w-full min-h-[50vh] lg:min-h-[80vh] flex flex-col justify-center items-center">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full min-h-[50vh] lg:min-h-[80vh] flex flex-col justify-center items-center sm:mt-20 lg:mt-0 mt-16"
+    >
       <div className="mb-8">
         {" "}
         <Image
@@ -13,7 +19,7 @@ const HomePage = () => {
           className="mx-auto "
         />
       </div>
-      <div className="bg-white rounded-full py-[8px] input-shadow border border-[#dfe1e5] w-[90%] lg:w-[35%] flex justify-between items-center">
+      <div className="bg-white rounded-full py-[8px] input-shadow border border-[#dfe1e5] w-[90%] sm:w-[80%] lg:w-[35%] flex justify-between items-center">
         <div className="text-slate-400 ml-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +66,7 @@ const HomePage = () => {
           I am Feeling Lucky !
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

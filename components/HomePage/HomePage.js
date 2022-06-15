@@ -1,7 +1,23 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
+
+import { useRef } from "react";
 const HomePage = () => {
+  // defining the router
+  const router = useRouter();
+  // search Container
+  const SearchRef = useRef(null);
+
+  // haandling the onsubmit event
   const handleSubmit = (e) => {
     e.preventDefault();
+    const status = SearchRef.current.value;
+    // checking if the search input is empty
+    if (!status.trim()) {
+      return;
+    }
+    router.push(`/search/${status.trim()}`);
+    SearchRef.current.value = null;
   };
   return (
     <form
@@ -38,6 +54,7 @@ const HomePage = () => {
         </div>
         <input
           type="text"
+          ref={SearchRef}
           placeholder="Search anything"
           className="w-[80%] outline-none py-2 text-sm"
         />
